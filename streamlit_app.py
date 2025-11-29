@@ -1,6 +1,7 @@
 # app.py
 import base64
 import io
+import os
 
 import streamlit as st
 from openai import OpenAI
