@@ -2,31 +2,40 @@
 from typing import Optional, Set
 
 
+# models.py
+
 class Recipe:
     def __init__(
         self,
         recipe_id: str,
         name: str,
-        ingredients: Optional[Set[str]] = None,
-        diets: Optional[Set[str]] = None,       # e.g. {"vegan", "gluten-free"}
-        allergens: Optional[Set[str]] = None,   # e.g. {"peanut", "dairy"}
-        calories: Optional[float] = None,
-        protein: Optional[float] = None,
-        carbs: Optional[float] = None,
-        fat: Optional[float] = None,
+        ingredients=None,
+        diets=None,
+        allergens=None,
+        calories=None,
+        protein=None,
+        carbs=None,
+        fat=None,
+        fiber=None,
+        instructions=None,
+        source_url=None,
     ):
-        self.id = recipe_id
+        self.recipe_id = recipe_id
+        self.id = recipe_id 
         self.name = name
-        self.ingredients = ingredients or set()
-        self.diets = diets or set()
-        self.allergens = allergens or set()
+        self.ingredients = ingredients or []
+        self.diets = diets or []
+        self.allergens = allergens or []
         self.calories = calories
         self.protein = protein
         self.carbs = carbs
         self.fat = fat
+        self.fiber = fiber
+        self.instructions = instructions  # <-- new
+        self.source_url = source_url      # <-- new
 
-    def __repr__(self) -> str:
-        return f"Recipe(id={self.id!r}, name={self.name!r})"
+    def __repr__(self):
+        return f"<Recipe {self.name} ({self.calories} kcal)>"
 
 
 class UserProfile:

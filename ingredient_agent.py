@@ -21,7 +21,7 @@ class IngredientAgent:
         for r in recipes:
             recipe_summaries.append(
                 {
-                    "id": r.id,
+                    "id": getattr(r, "id", r.recipe_id),
                     "name": r.name,
                     "ingredients": sorted(list(r.ingredients)),
                 }
